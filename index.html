@@ -1,28 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="todoApp">
     <head>
-        <title>CSSLek - lek2</title>
+        <title>TurboJourney</title>
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="stylesheet" href="/resources/css/main.css">
     </head>
-    <body>
+    <body ng-controller="todoCtrl">
         <div class="todo-container">
             <h1>My To-Do List</h1>
             <div class="items">
+<!--                <h2 aria-hidden="true">Items</h2>-->
+                <input ng-repeat-start="item in items" id="item{{$index}}" type="checkbox" ng-model="item.checked">
+                <label ng-repeat-end for="item{{$index}}">{{item.label}}</label>
+<!--
                 <input id="item1" type="checkbox" checked>
                 <label for="item1">Create a to-do list</label>
                 
-                <input id="item2" type="checkbox">
-                <label for="item2">Take down christmas tree</label>
+                <input id="item2" type="checkbox" checked>
+                <label for="item2">Learn Erlang</label>
                 
-                <input id="item3" type="checkbox">
-                <label for="item3">Learn AngularJS</label>
+                <input id="item3" type="checkbox" checked>
+                <label for="item3">Do stuff</label>
+                
+                <input id="item4" type="checkbox">
+                <label for="item4">Take down christmas tree</label>
+                
+                <input id="item5" type="checkbox">
+                <label for="item5">Learn AngularJS</label>
+-->
                 
                 <h2 class="done" aria-hidden="true">Done</h2>
                 <h2 class="notdone" aria-hidden="true">Not done</h2>
+                
+                <button ng-click="addItem()">Add</button>
+<!--                <button ng-click="clearChecked()">Clear</button>-->
             </div>
         </div>
+        
+        <script src="/bower_components/angular/angular.min.js"></script>
+        <script src="/resources/js/todo.js"></script>
     </body>
 </html>

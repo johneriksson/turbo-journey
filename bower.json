@@ -1,0 +1,17 @@
+{
+  "name": "TurboJourney",
+  "homepage": "https://github.com/johneriksson/turbo-journey",
+  "authors": [
+    "John Eriksson <johne3@kth.se>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.9"
+  }
+}

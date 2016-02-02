@@ -140,6 +140,31 @@ body {
     input[type="checkbox"]:checked + label::before {
         content: "\f14a";
     }
+    
+    input[type="text"] {
+        order: 5;
+        
+        background: none;
+        border: 2px solid $blue-grey;
+        
+        font: 500 1.2em 'Roboto', sans-serif;
+        color: $blue-grey;
+        
+        margin: 10px 0;
+        padding: 5px;
+    }
+    
+    button {
+        order: 6;
+        
+        width: 100%;
+        background: rgba(255,255,255,.4);
+        border: none;
+        font: 500 1.2em 'Roboto', sans-serif;
+        color: $blue-grey;
+        cursor: pointer;
+        padding: 5px;
+    }
 }
 
 @keyframes done {
