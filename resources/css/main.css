@@ -1,0 +1,118 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,700);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+html, body {
+  min-height: 100%; }
+
+body {
+  padding: 20px;
+  color: #435757;
+  background: linear-gradient(-20deg, #d0b782 20%, cornflowerblue 80%);
+  font: 500 1.2em 'Roboto', sans-serif; }
+
+.todo-container {
+  max-width: 450px;
+  margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 4vm;
+  text-align: center; }
+  .todo-container h1 {
+    border-top: 5px solid #435757;
+    border-bottom: 5px solid #435757;
+    margin: 0;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.4);
+    font-size: 5vw;
+    text-align: center; }
+    @media screen and (min-width: 1100px) {
+      .todo-container h1 {
+        font-size: 40px; } }
+  .todo-container .items {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    counter-reset: done-items notdone-items; }
+  .todo-container h2 {
+    position: relative;
+    margin: 0;
+    padding: 10px 0;
+    font-size: 4vw; }
+    @media screen and (min-width: 1100px) {
+      .todo-container h2 {
+        font-size: 30px; } }
+    @media screen and (max-width: 500px) {
+      .todo-container h2 {
+        font-size: 20px; } }
+  .todo-container h2:last-child {
+    margin-top: 50px; }
+  .todo-container h2::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: -20px;
+    width: 5px;
+    background-color: #435757; }
+  .todo-container h2::after {
+    display: block;
+    float: right;
+    font-weight: normal; }
+  .todo-container .done {
+    order: 1; }
+  .todo-container .done::after {
+    content: " (" counter(done-items) ") "; }
+  .todo-container .notdone {
+    order: 3; }
+  .todo-container .notdone::after {
+    content: " (" counter(notdone-items) ") "; }
+  .todo-container input[type="checkbox"] {
+    display: block;
+    height: 53px;
+    margin: 0 0 -53px -9999px;
+    order: 4;
+    outline: none;
+    counter-increment: notdone-items; }
+  .todo-container input[type="checkbox"]:checked {
+    order: 2;
+    counter-increment: done-items; }
+  .todo-container label {
+    display: block;
+    position: relative;
+    padding: 15px 0 15px 45px;
+    border-top: 1px dashed #FFF;
+    order: 4;
+    cursor: pointer;
+    animation: notdone .5s; }
+  .todo-container label::before {
+    content: "\f096";
+    display: block;
+    position: absolute;
+    top: 11px;
+    left: 10px;
+    font: 1.5em "FontAwesome"; }
+  .todo-container label:hover, .todo-container input[type="checkbox"]:focus + label {
+    background-color: rgba(255, 255, 255, 0.2); }
+  .todo-container input[type="checkbox"]:checked + label {
+    order: 2;
+    animation: done .5s; }
+  .todo-container input[type="checkbox"]:checked + label::before {
+    content: "\f14a"; }
+
+@keyframes done {
+  0% {
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(20px); }
+  50% {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.4); } }
+@keyframes notdone {
+  0% {
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-20px); }
+  50% {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.4); } }
+
+/*# sourceMappingURL=main.css.map */

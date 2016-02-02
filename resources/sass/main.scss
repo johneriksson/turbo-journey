@@ -1,0 +1,167 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,700);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+
+$blue-grey: #435757;
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    padding: 20px;
+    color: $blue-grey;
+    background: linear-gradient(-20deg, #d0b782 20%, cornflowerblue 80%);
+    font: 500 1.2em 'Roboto', sans-serif;
+}
+
+.todo-container {
+    max-width: 450px;
+    margin: 0 auto;
+//    border-top: 5px solid $blue-grey;
+    background-color: rgba(255,255,255,.2);
+    font-size: 4vm;
+    text-align: center;
+    
+    h1 {
+        border-top: 5px solid $blue-grey;
+        border-bottom: 5px solid $blue-grey;
+        margin: 0;
+        padding: 20px;
+        background-color: rgba(255,255,255,.4);
+        font-size: 5vw;
+        text-align: center;
+        
+        @media screen and (min-width: 1100px) {
+            font-size: 40px;
+        }
+    }
+    
+    .items {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        counter-reset: done-items notdone-items;
+    }
+    
+    h2 {
+        position: relative;
+        margin: 0;
+        padding: 10px 0;
+        font-size: 4vw;
+        
+        @media screen and (min-width: 1100px) {
+            font-size: 30px;
+        }
+        
+        @media screen and (max-width: 500px) {
+            font-size: 20px;
+        }
+    }
+    
+    h2:last-child {
+        margin-top: 50px;
+    }
+    
+    h2::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 10px;
+        bottom: 10px;
+        left: -20px;
+        width: 5px;
+        background-color: $blue-grey;
+    }
+    
+    h2::after {
+        display: block;
+        float: right;
+        font-weight: normal;
+    }
+    
+    .done {
+        order: 1;
+    }
+    
+    .done::after {
+        content: " (" counter(done-items) ") ";
+    }
+    
+    .notdone {
+        order: 3;
+    }
+    
+    .notdone::after {
+        content: " (" counter(notdone-items) ") ";
+    }
+    
+    input[type="checkbox"] {
+        display: block;
+        height: 53px;
+        margin: 0 0 -53px -9999px;
+        order: 4;
+        outline: none;
+        counter-increment: notdone-items;
+    }
+    
+    input[type="checkbox"]:checked {
+        order: 2;
+        counter-increment: done-items;
+    }
+    
+    label {
+        display: block;
+        position: relative;
+        padding: 15px 0 15px 45px;
+        border-top: 1px dashed #FFF;
+        order: 4;
+        cursor: pointer;
+        animation: notdone .5s;
+    }
+    
+    label::before {
+        content: "\f096";
+        display: block;
+        position: absolute;
+        top: 11px;
+        left: 10px;
+        font: 1.5em "FontAwesome";
+    }
+    
+    label:hover, input[type="checkbox"]:focus + label {
+        background-color: rgba(255,255,255,.2);
+    }
+    
+    input[type="checkbox"]:checked + label {
+        order: 2;
+        animation: done .5s;
+    }
+    
+    input[type="checkbox"]:checked + label::before {
+        content: "\f14a";
+    }
+}
+
+@keyframes done {
+    0% {
+        opacity: 0;
+        background-color: rgba(255,255,255,.4);
+        transform: translateY(20px);
+    }
+    50% {
+        opacity: 1;
+        background-color: rgba(255,255,255,.4);
+    }
+}
+
+@keyframes notdone {
+    0% {
+        opacity: 0;
+        background-color: rgba(255,255,255,.4);
+        transform: translateY(-20px);
+    }
+    50% {
+        opacity: 1;
+        background-color: rgba(255,255,255,.4);
+    }
+}
