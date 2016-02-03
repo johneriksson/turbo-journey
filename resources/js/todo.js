@@ -7,15 +7,23 @@ todoApp.controller("todoCtrl", ["$scope", function($scope) {
         { label: "Learn AngularJS", checked: false }
     ];
     
-    $scope.addItem = function() {
+    $scope.doneAdding = function() {
+        $scope.addingNew = false;
+        
         if($scope.newItem != undefined && $scope.newItem.length > 0) {
             $scope.items.push({
                 label: $scope.newItem,
                 checked: false
-            });
-            $scope.newItem = "";
+            });   
         }
+        
+        $scope.newItem = "";
     };
     
+    $scope.clear = function() {
+        $scope.items = $scope.items.filter(function(item) {
+            return !item.checked;
+        });
+    };
     
 }]);
